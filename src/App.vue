@@ -31,6 +31,10 @@ countries.map(item => {
 const cArr = countries.sort(() => {
   return Math.random() - 0.5;
 })
+console.log(images);
+console.log(cArr);
+
+
 
 
 const count = ref(0);
