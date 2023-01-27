@@ -8,7 +8,7 @@
     </div>
     <div :class="$style.main" ref="mainNode">
       <div :class="$style.wrapper" :style="{ width }">
-        <img :class="$style.image" ref="imgNode" :src="`./${images[`./assets/${cArr[count].code.toLocaleLowerCase()}.svg`].name}`" alt="" />
+        <img :class="$style.image" ref="imgNode" :src="`./${images[`./assets/${cArr[count].code.toLocaleLowerCase()}.svg`].toString()}`" alt="" />
       </div>
     </div>
     <div :class="[$style.footer, { [$style._active]: isActive }]" @click="setActive">
