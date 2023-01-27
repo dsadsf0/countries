@@ -8,7 +8,7 @@
     </div>
     <div :class="$style.main" ref="mainNode">
       <div :class="$style.wrapper" :style="{ width }">
-        <img :class="$style.image" ref="imgNode" :src="`./${images[`./assets/${cArr[count].code.toLocaleLowerCase()}.svg`].toString()}`" alt="" />
+        <img :class="$style.image" ref="imgNode" :src="cArr[count].flag" alt="" />
       </div>
     </div>
     <div :class="[$style.footer, { [$style._active]: isActive }]" @click="setActive">
@@ -22,16 +22,16 @@
 <script setup lang="ts">
 import countries from './countries.json'
 import { ref, onMounted, onUnmounted } from 'vue';
-const images = import.meta.glob('./assets/*.svg')
+const images = import.meta.glob('./assets/*.svg');
 
-// console.log(images);
-// countries.map(item => {
-//   item.flag = images[`./svg/${item.code.toLocaleLowerCase()}.svg`].name
-// })
+countries.map(item => {
+  item.flag = images[`./assets/${item.code.toLocaleLowerCase()}.svg`].name
+})
 
 const cArr = countries.sort(() => {
   return Math.random() - 0.5;
 })
+
 
 const count = ref(0);
 const isActive = ref(false);
