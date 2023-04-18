@@ -20,42 +20,15 @@
 </template>
 <script setup lang="ts">
 import countries from './countries.json'
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref } from 'vue';
 
 const cArr = countries.sort(() => {
   return Math.random() - 0.5;
 })
 
 const count = ref(0);
-const isActive = ref(false);
-const imgNode = ref(null)
+const isActive = ref(false)
 const mainNode = ref(null)
-const width = ref('100%')
-
-function checkWidth() { 
-  if (imgNode && mainNode && imgNode.value && mainNode.value) {
-    const main = mainNode.value as HTMLDivElement
-    const img = imgNode.value as HTMLDivElement
-    if (img.offsetWidth === 0 && img.offsetHeight === 0) {
-      if (main.offsetWidth > main.offsetHeight - 40) {
-        width.value = 'auto'
-        return
-      } else {
-        width.value = '100%'
-        return
-      }
-    }
-    if (main.offsetWidth - 40 > img.offsetWidth && main.offsetHeight - 40 >= img.offsetHeight) {
-      width.value = 'auto'
-      return
-    }
-    if (main.offsetWidth - 40 <= img.offsetWidth && main.offsetHeight - 40 >= img.offsetHeight) {
-      width.value = '100%'
-      return
-    }
-  }
-  width.value = 'auto'
-}
 
 function setActive() {
   isActive.value = !isActive.value  
@@ -78,15 +51,6 @@ function prev() {
   }
   isActive.value = false
 }
-
-onMounted(() => {
-  // checkWidth()
-  // window.addEventListener('resize', checkWidth)
-})
-
-onUnmounted(() => {
-  // window.removeEventListener('resize', checkWidth)
-})
 </script>
 <style module>
 .container {
