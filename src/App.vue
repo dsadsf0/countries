@@ -7,7 +7,7 @@
       Next
     </div>
     <div :class="$style.main" ref="mainNode">
-      <div :class="$style.wrapper" :style="{ backgroundImage: `flags/${cArr[count].code.toLocaleLowerCase()}.svg` }">
+      <div :class="$style.wrapper" :style="{ backgroundImage: `url(flags/${cArr[count].code.toLocaleLowerCase()}.svg)` }">
       </div>
     </div>
     <div :class="[$style.footer, { [$style._active]: isActive }]" @click="setActive">
