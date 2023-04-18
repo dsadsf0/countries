@@ -7,8 +7,7 @@
       Next
     </div>
     <div :class="$style.main" ref="mainNode">
-      <div :class="$style.wrapper" :style="{ width }">
-        <img :class="$style.image" ref="imgNode" :src="`flags/${cArr[count].code.toLocaleLowerCase()}.svg`" alt="" />
+      <div :class="$style.wrapper" :style="{ backgroundImage: `flags/${cArr[count].code.toLocaleLowerCase()}.svg` }">
       </div>
     </div>
     <div :class="[$style.footer, { [$style._active]: isActive }]" @click="setActive">
@@ -81,12 +80,12 @@ function prev() {
 }
 
 onMounted(() => {
-  checkWidth()
-  window.addEventListener('resize', checkWidth)
+  // checkWidth()
+  // window.addEventListener('resize', checkWidth)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', checkWidth)
+  // window.removeEventListener('resize', checkWidth)
 })
 </script>
 <style module>
@@ -127,11 +126,14 @@ onUnmounted(() => {
 }
 
 .wrapper {
+  width: 100%;
   height: 100%;
-  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .image {
